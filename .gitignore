@@ -1,0 +1,36 @@
+# Gradle i Kotlin — pliki generowane
+.gradle/
+.kotlin/
+**/build/
+
+# Lokalna konfiguracja Android SDK
+local.properties
+
+# Android Studio / IntelliJ — ustawienia lokalne
+.idea/
+*.iml
+
+# Narzędzia Androida i kompilacja natywna
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Wyniki kompilacji i profilowanie
+*.apk
+*.aab
+*.ap_
+*.hprof
+output-metadata.json
+
+# Klucze podpisujące i prywatna konfiguracja
+*.jks
+*.keystore
+keystore.properties
+secrets.properties
+.env
+.env.*
+
+# System operacyjny i logi
+.DS_Store
+Thumbs.db
+*.log
