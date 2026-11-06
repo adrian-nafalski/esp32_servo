@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Ramię startuje odchylone o 45° i płynnie zatrzymuje się w pozycji neutralnej (0°).
+    Krzywa fast_out_slow_in wygasza ruch bez odbicia – serwo "dojeżdża" i stoi.
+    Przy wyłączonych animacjach systemowych animator od razu kończy się w stanie końcowym,
+    który jest identyczny ze stanem bazowym grafiki.
+-->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/splash_arm_duration_ms"
+    android:interpolator="@android:interpolator/fast_out_slow_in"
+    android:propertyName="rotation"
+    android:valueFrom="-45"
+    android:valueTo="0"
+    android:valueType="floatType" />

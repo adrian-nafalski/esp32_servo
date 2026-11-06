@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Animowana ikona systemowego splash screena (android:windowSplashScreenAnimatedIcon).
+    Animowane jest wyłącznie ramię: jeden łagodny ruch do pozycji neutralnej, bez pętli.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/splash_servo">
+    <target
+        android:name="arm"
+        android:animation="@animator/splash_arm_settle" />
+</animated-vector>

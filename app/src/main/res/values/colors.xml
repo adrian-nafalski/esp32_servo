@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--
-        Tło okna. MUSI być identyczne z ServoLightColors.background
-        w ui/theme/Color.kt – inaczej przy starcie widać błysk.
+        Tło okna i splash screena. MUSI być identyczne z ServoLightColors.background
+        w ui/theme/Color.kt – inaczej przy przejściu splash → Compose widać błysk.
     -->
     <color name="servo_background">#FFF6F7F8</color>
+
+    <!-- Splash screen (warianty ciemne w values-night/colors.xml). -->
+    <color name="splash_servo_body">#FF3B73AB</color>
+    <color name="splash_servo_horn">#FF1F2933</color>
+    <color name="splash_servo_axis">#FFF6F7F8</color>
+
+    <!-- Tło ikony launchera – stałe, niezależne od motywu systemu. -->
+    <color name="ic_launcher_background">#FFF2F4F6</color>
 </resources>

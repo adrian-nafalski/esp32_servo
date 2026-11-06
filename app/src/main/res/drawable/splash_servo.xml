@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Statyczna grafika splash screena: ten sam motyw co ikona launchera.
+    Stan bazowy (rotation = 0) to pozycja neutralna – jeśli system nie odtworzy
+    animacji albo animacje są wyłączone, użytkownik widzi właśnie ten kadr.
+
+    Kolory pochodzą z zasobów i mają warianty w values-night, dzięki czemu
+    grafika pasuje do jasnego i ciemnego tła okna.
+
+    Systemowy splash maskuje ikonę okręgiem o średnicy 2/3 rozmiaru grafiki
+    (jak ikony adaptacyjne), więc obowiązuje ta sama bezpieczna strefa co w launcherze.
+    Grupa "scale" lekko zmniejsza motyw, żeby splash był spokojniejszy.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:name="scale"
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="0.85"
+        android:scaleY="0.85">
+
+        <!-- Obudowa pozostaje nieruchoma. -->
+        <path
+            android:name="body"
+            android:fillColor="@color/splash_servo_body"
+            android:pathData="M34,48 H70 A7,7 0 0,1 77,55 V69 A7,7 0 0,1 70,76 H34 A7,7 0 0,1 27,69 V55 A7,7 0 0,1 34,48 Z" />
+
+        <!-- Orczyk obraca się wokół osi (63, 62). -->
+        <group
+            android:name="arm"
+            android:pivotX="63"
+            android:pivotY="62"
+            android:rotation="0">
+            <path
+                android:name="horn"
+                android:fillColor="@color/splash_servo_horn"
+                android:pathData="M58.558,34.723 A4.5,4.5 0 1,1 67.442,34.723 L71.883,63.446 A9,9 0 0,1 54.117,63.446 Z" />
+        </group>
+
+        <!-- Oś obrotu: rysowana poza grupą ramienia, bo jest symetryczna względem obrotu. -->
+        <path
+            android:name="axis"
+            android:fillColor="@color/splash_servo_axis"
+            android:pathData="M59.8,62 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0 Z" />
+    </group>
+</vector>

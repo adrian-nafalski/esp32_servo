@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Warstwa monochromatyczna dla ikon tematycznych (Android 13+).
+    System używa wyłącznie kanału alfa i sam nadaje kolor, więc kształty
+    rozdziela przezroczysta szczelina zamiast koloru:
+      - obudowa jest przycięta ścieżką z "dziurą" w kształcie powiększonego orczyka
+        (zewnętrzny prostokąt zgodnie z ruchem wskazówek zegara, kontur orczyka
+        w przeciwnym kierunku – reguła nonZero tworzy otwór),
+      - oś obrotu jest otworem w orczyku (fillType evenOdd).
+    Całość lekko pomniejszona, bo ikony tematyczne wyglądają lepiej z większym marginesem.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="0.86"
+        android:scaleY="0.86">
+
+        <group android:name="body">
+            <clip-path android:pathData="M0,0 H108 V108 H0 Z M56.091,35.125 L51.649,63.848 A11.5,11.5 0 0,0 74.351,63.848 L69.909,35.125 A7,7 0 1,0 56.091,35.125 Z" />
+            <path
+                android:fillColor="#FFFFFFFF"
+                android:pathData="M34,48 H70 A7,7 0 0,1 77,55 V69 A7,7 0 0,1 70,76 H34 A7,7 0 0,1 27,69 V55 A7,7 0 0,1 34,48 Z" />
+        </group>
+
+        <path
+            android:name="horn"
+            android:fillColor="#FFFFFFFF"
+            android:fillType="evenOdd"
+            android:pathData="M58.558,34.723 A4.5,4.5 0 1,1 67.442,34.723 L71.883,63.446 A9,9 0 0,1 54.117,63.446 Z M59.8,62 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0 Z" />
+    </group>
+</vector>

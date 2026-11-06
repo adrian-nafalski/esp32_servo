@@ -2,4 +2,8 @@
 <resources>
     <!-- MUSI być identyczne z ServoDarkColors.background w ui/theme/Color.kt. -->
     <color name="servo_background">#FF121417</color>
+
+    <color name="splash_servo_body">#FF4C83BA</color>
+    <color name="splash_servo_horn">#FFE6EAEE</color>
+    <color name="splash_servo_axis">#FF121417</color>
 </resources>

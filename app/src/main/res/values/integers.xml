@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Czas ruchu ramienia na splash screenie. Android 12 przyjmuje maksymalnie 1000 ms.
+        System nie czeka na koniec animacji: splash znika, gdy aplikacja narysuje
+        pierwszą klatkę, więc przy szybkim starcie animacja bywa ucięta – to zamierzone.
+    -->
+    <integer name="splash_arm_duration_ms">650</integer>
+</resources>
