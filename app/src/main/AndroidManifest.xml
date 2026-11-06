@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Bez BLE aplikacja nie ma żadnej funkcji. -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <!--
+        Android 12+: wyszukiwanie ESP32. Aplikacja nie wyznacza lokalizacji na podstawie
+        skanowania, dlatego deklaruje neverForLocation i NIE prosi o ACCESS_FINE_LOCATION.
+        Uwaga: z tą flagą system może odfiltrować część beaconów BLE – zwykłe
+        ogłoszenia ESP32 nie są beaconami, ale trzeba to sprawdzić na fizycznym telefonie.
+    -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation" />
+
+    <!-- Połączenie GATT z ESP32 i prośba o włączenie Bluetooth. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!--
+        Świadomie brak: BLUETOOTH_ADVERTISE (telefon niczego nie ogłasza),
+        uprawnień lokalizacji, INTERNET i usług pierwszoplanowych.
+    -->
+
+    <!-- Aplikacja nie przechowuje danych, więc kopia zapasowa jest wyłączona. -->
     <application
-        android:allowBackup="true"
+        android:name=".ServoApplication"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Esp32_servo">
+        android:theme="@style/Theme.Servo">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Esp32_servo"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.Servo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,12 +11,12 @@ android {
 
     defaultConfig {
         applicationId = "com.example.esp32_servo"
+        // Android 12 (API 31) jest minimalną wersją: tylko tam istnieją BLUETOOTH_SCAN/CONNECT
+        // i systemowy SplashScreen. Projekt celowo nie zawiera ścieżek dla API 30 i starszych.
         minSdk = 31
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -44,12 +44,12 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.process)
+
     testImplementation(libs.junit)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    testImplementation(libs.kotlinx.coroutines.test)
+
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

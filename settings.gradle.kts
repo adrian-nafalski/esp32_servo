@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "esp32_servo"
+rootProject.name = "Servo"
 include(":app")

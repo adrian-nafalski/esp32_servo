@@ -1,3 +1,147 @@
-<resources>
-    <string name="app_name">esp32_servo</string>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="pl">
+    <string name="app_name">Servo</string>
+
+    <!-- Odmiana dla czytników ekranu: 1 stopień, 2–4 stopnie, 5+ stopni (other – ułamki). -->
+    <plurals name="degrees_spoken">
+        <item quantity="one">%d stopień</item>
+        <item quantity="few">%d stopnie</item>
+        <item quantity="many">%d stopni</item>
+        <item quantity="other">%d stopnia</item>
+    </plurals>
+
+    <!-- Zwięzły stan w górnym pasku -->
+    <string name="status_unsupported">BLE niedostępne</string>
+    <string name="status_permissions_missing">Brak uprawnień</string>
+    <string name="status_bluetooth_off">Bluetooth wyłączony</string>
+    <string name="status_disconnected">Rozłączono</string>
+    <string name="status_scanning">Wyszukiwanie</string>
+    <string name="status_connecting">Łączenie</string>
+    <string name="status_discovering">Wykrywanie usług</string>
+    <string name="status_ready">Gotowe do sterowania</string>
+    <string name="status_error">Błąd połączenia</string>
+
+    <string name="action_connect">Połącz</string>
+    <string name="action_disconnect">Rozłącz</string>
+    <string name="action_cancel">Anuluj</string>
+    <string name="action_connect_esp32">Połącz z ESP32</string>
+
+    <!-- Panel stanu połączenia (gdy sterowanie jest niedostępne) -->
+    <string name="notice_idle_title">Nie połączono</string>
+    <string name="notice_idle_body">Połącz telefon z ESP32, aby sterować serwem. Do tego czasu sterowanie jest nieaktywne.</string>
+    <string name="notice_disconnected_title">Rozłączono</string>
+    <string name="notice_link_lost_title">Utracono połączenie</string>
+    <string name="notice_connect_failed_title">Nie udało się połączyć</string>
+    <string name="notice_incompatible_title">Niezgodne urządzenie</string>
+    <string name="notice_connecting_title">Łączenie z %1$s</string>
+    <string name="notice_discovering_title">Sprawdzanie usług: %1$s</string>
+    <string name="notice_connecting_body">Sterowanie zostanie odblokowane dopiero po wykryciu usługi Servo i charakterystyki kąta.</string>
+    <string name="notice_unsupported_title">Bluetooth LE niedostępny</string>
+    <string name="notice_unsupported_body">Ten telefon nie obsługuje Bluetooth Low Energy, więc nie może połączyć się z ESP32.</string>
+    <string name="notice_controls_locked">Sterowanie jest zablokowane.</string>
+
+    <!-- Przyczyny rozłączenia -->
+    <string name="reason_user">Połączenie zostało zakończone.</string>
+    <string name="reason_background">Aplikacja była w tle dłużej niż %1$d s, więc połączenie zostało zamknięte.</string>
+    <string name="reason_bluetooth_off">Bluetooth został wyłączony.</string>
+    <string name="reason_permissions">Brak uprawnień do Bluetooth.</string>
+    <string name="reason_connect_timeout">ESP32 nie odpowiedział w wyznaczonym czasie. Sprawdź, czy jest zasilany i w zasięgu.</string>
+    <string name="reason_discovery_timeout">Nie udało się odczytać usług urządzenia w wyznaczonym czasie.</string>
+    <string name="reason_status_read_timeout">ESP32 nie odpowiedział na odczyt statusu w wyznaczonym czasie.</string>
+    <string name="reason_write_timeout">ESP32 nie potwierdził zapisu w wyznaczonym czasie, więc połączenie zostało zamknięte.</string>
+    <string name="reason_connect_failed">Nie udało się nawiązać połączenia (kod GATT %1$d).</string>
+    <string name="reason_link_lost_remote">ESP32 zakończył połączenie, np. po restarcie.</string>
+    <string name="reason_link_lost_timeout">Brak sygnału z ESP32: urządzenie jest poza zasięgiem albo bez zasilania.</string>
+    <string name="reason_link_lost">Połączenie zostało przerwane (kod GATT %1$d).</string>
+    <string name="reason_discovery_failed">Nie udało się wykryć usług (kod GATT %1$d).</string>
+    <string name="reason_missing_service">To urządzenie nie udostępnia usługi Servo. Sprawdź firmware albo wybierz inne urządzenie.</string>
+    <string name="reason_missing_characteristic">Usługa Servo nie ma charakterystyki kąta. Sprawdź wersję firmware\'u.</string>
+    <string name="reason_not_writable">Charakterystyka kąta nie pozwala na zapis. Sprawdź firmware.</string>
+
+    <!-- Sterowanie -->
+    <string name="control_target_label">Kąt zadany</string>
+    <string name="angle_degrees">%1$d°</string>
+    <string name="angle_content_description">Kąt zadany: %1$s</string>
+    <string name="control_step_down">−1°</string>
+    <string name="control_step_up">+1°</string>
+    <string name="control_step_down_description">Zmniejsz kąt zadany o 1 stopień</string>
+    <string name="control_step_up_description">Zwiększ kąt zadany o 1 stopień</string>
+    <string name="control_slider_description">Suwak kąta zadanego</string>
+    <string name="preset_min">Min</string>
+    <string name="preset_center">Środek</string>
+    <string name="preset_max">Maks</string>
+    <string name="preset_min_description">Ustaw minimum: %1$s</string>
+    <string name="preset_center_description">Ustaw środek: %1$s</string>
+    <string name="preset_max_description">Ustaw maksimum: %1$s</string>
+
+    <string name="command_unavailable">Brak połączenia. Położenie serwa nieznane.</string>
+    <string name="command_nothing_sent">Nie wysłano komendy. Położenie serwa nieznane.</string>
+    <string name="command_reported">ESP32 zgłasza ten kąt jako ostatnio przyjętą komendę.</string>
+    <string name="command_sending">Wysyłanie…</string>
+    <string name="command_delivered_ack">Dostarczono do ESP32 (zapis potwierdzony).</string>
+    <string name="command_delivered_no_ack">Wysłano do ESP32 (zapis bez potwierdzenia).</string>
+    <string name="command_failed">Nie dostarczono komendy %1$d°.</string>
+    <string name="command_retry">Wyślij ponownie</string>
+    <string name="indicator_note">Rysunek pokazuje kąt zadany, nie zmierzony.</string>
+    <string name="indicator_description">Podgląd ramienia serwa ustawionego na kąt zadany: %1$s</string>
+
+    <!-- Urządzenie -->
+    <string name="device_section_title">Urządzenie</string>
+    <string name="device_unnamed">Urządzenie bez nazwy</string>
+    <string name="device_state_connecting">Łączenie…</string>
+    <string name="device_state_discovering">Wykrywanie usług i charakterystyk…</string>
+    <string name="device_state_ready">Połączono, charakterystyka kąta zweryfikowana</string>
+    <string name="details_title">Szczegóły techniczne</string>
+    <string name="details_expand">Pokaż szczegóły techniczne</string>
+    <string name="details_collapse">Ukryj szczegóły techniczne</string>
+    <string name="details_address">Adres</string>
+    <string name="details_service">Usługa</string>
+    <string name="details_angle_characteristic">Charakterystyka kąta</string>
+    <string name="details_status_characteristic">Charakterystyka statusu</string>
+    <string name="details_status_available">dostępna (odczyt)</string>
+    <string name="details_status_missing">niedostępna</string>
+    <string name="details_write_type">Rodzaj zapisu</string>
+    <string name="details_write_with_response">z potwierdzeniem (Write Request)</string>
+    <string name="details_write_without_response">bez potwierdzenia (Write Command)</string>
+    <string name="details_encoding">Kodowanie kąta</string>
+    <string name="details_encoding_value">uint16 little-endian, 2 bajty</string>
+    <string name="details_command_interval">Limit komend</string>
+    <string name="details_command_interval_value">najwyżej 1 na %1$d ms</string>
+    <string name="details_range">Zakres logiczny</string>
+    <string name="details_range_value">%1$d–%2$d° (założenie do sprawdzenia)</string>
+    <string name="details_firmware_target">Ostatnia komenda przyjęta przez ESP32</string>
+    <string name="firmware_target_none">brak od uruchomienia ESP32</string>
+    <string name="firmware_target_not_supported">firmware nie udostępnia</string>
+    <string name="firmware_target_read_failed">nie udało się odczytać</string>
+    <string name="firmware_target_out_of_range">%1$d° (poza zakresem aplikacji)</string>
+
+    <!-- Wybór urządzenia -->
+    <string name="picker_title">Wybierz ESP32</string>
+    <string name="picker_subtitle_filtered">Lista zawiera urządzenia, które ogłaszają usługę Servo.</string>
+    <string name="picker_subtitle_all">Lista zawiera wszystkie urządzenia BLE w pobliżu. Zgodność zostanie sprawdzona po połączeniu.</string>
+    <string name="picker_scanning">Wyszukiwanie… (maks. %1$d s)</string>
+    <string name="picker_scan_finished">Wyszukiwanie zakończone</string>
+    <string name="picker_scan_idle">Wyszukiwanie nieaktywne</string>
+    <string name="picker_stop">Zatrzymaj</string>
+    <string name="picker_rescan">Szukaj ponownie</string>
+    <string name="picker_waiting_for_results">Szukam urządzeń w pobliżu…</string>
+    <string name="picker_empty_title">Nie znaleziono ESP32</string>
+    <string name="picker_empty_body">Sprawdź, czy ESP32 jest zasilany, ma wgrany firmware Servo i nie jest połączony z innym telefonem.</string>
+    <string name="picker_show_all">Pokaż wszystkie urządzenia BLE</string>
+    <string name="picker_show_compatible">Pokaż tylko urządzenia z usługą Servo</string>
+    <string name="picker_no_service_badge">Brak usługi Servo w ogłoszeniu</string>
+    <string name="picker_rssi">%1$s dBm</string>
+    <string name="picker_rssi_description">Siła sygnału %1$d dBm</string>
+    <string name="picker_connecting">Łączenie…</string>
+    <string name="picker_connect_description">Połącz z urządzeniem %1$s</string>
+    <string name="picker_permission_title">Potrzebne uprawnienie „Urządzenia w pobliżu”</string>
+    <string name="picker_permission_body">Servo używa go wyłącznie do wyszukania ESP32 i połączenia z nim. Aplikacja nie ustala na tej podstawie lokalizacji.</string>
+    <string name="picker_permission_grant">Zezwól</string>
+    <string name="picker_permission_denied_body">Uprawnienie zostało odrzucone. Włącz „Urządzenia w pobliżu” w ustawieniach aplikacji, a potem wróć tutaj.</string>
+    <string name="picker_open_settings">Otwórz ustawienia</string>
+    <string name="picker_bluetooth_off_title">Bluetooth jest wyłączony</string>
+    <string name="picker_bluetooth_off_body">Włącz Bluetooth, aby wyszukać ESP32.</string>
+    <string name="picker_enable_bluetooth">Włącz Bluetooth</string>
+    <string name="scan_error_too_frequent">Android ogranicza liczbę wyszukiwań (5 w ciągu 30 s). Spróbuj ponownie za chwilę.</string>
+    <string name="scan_error_unavailable">Skaner Bluetooth jest niedostępny. Sprawdź, czy Bluetooth jest włączony.</string>
+    <string name="scan_error_failed">Nie udało się rozpocząć wyszukiwania (kod %1$d).</string>
 </resources>

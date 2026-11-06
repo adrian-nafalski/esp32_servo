@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Okrąg z wykrzyknikiem: błąd lub ostrzeżenie (zawsze z towarzyszącym tekstem). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M3,12 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0"
+        android:strokeWidth="2"
+        android:strokeColor="#FF000000" />
+    <path
+        android:pathData="M12,7.5 V13"
+        android:strokeWidth="2"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M10.75,16.5 a1.25,1.25 0 1,0 2.5,0 a1.25,1.25 0 1,0 -2.5,0 Z" />
+</vector>

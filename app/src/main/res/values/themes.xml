@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Esp32_servo" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Rodzic zależny od trybu: wariant ciemny w values-night/themes.xml. -->
+    <style name="Base.Theme.Servo" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Servo" parent="Base.Theme.Servo">
+        <item name="android:windowBackground">@color/servo_background</item>
+    </style>
 </resources>
